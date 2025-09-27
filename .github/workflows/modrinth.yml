@@ -1,0 +1,42 @@
+name: Publish on Modrinth
+
+on:
+  release:
+    types: [ published ]
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4.1.1
+        with:
+          submodules: true
+
+      - name: Setup Java
+        uses: actions/setup-java@v4.0.0
+        with:
+          distribution: "temurin"
+          java-version: 21
+
+      - name: Executable
+        if: ${{ runner.os != 'Windows' }}
+        run: chmod +x ./gradlew
+
+      - name: Build
+        run: ./gradlew clean build
+
+      - name: Update description
+        uses: funnyboy-roks/modrinth-auto-desc@v1.5
+        with:
+          auth-token: ${{ secrets.MODRINTH_TOKEN }}
+          slug: VVf33usk
+
+      - name: Publish files to Modrinth
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: VVf33usk
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+          modrinth-unfeature-mode: any
