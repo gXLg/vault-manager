@@ -28,6 +28,7 @@ replay_pid*
 build/
 out/
 classes/
+!gradle/wrapper/gradle-wrapper.jar
 
 # eclipse
 *.launch
