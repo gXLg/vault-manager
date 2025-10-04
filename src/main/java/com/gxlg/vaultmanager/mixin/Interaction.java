@@ -6,8 +6,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.VaultBlock;
 import net.minecraft.block.enums.VaultState;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
+import net.minecraft.client.world.ClientWorld;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.text.Text;
@@ -28,7 +30,9 @@ public class Interaction {
     @Inject(at = @At("RETURN"), method = "interactBlock")
     private void interact(ClientPlayerEntity player, Hand hand, BlockHitResult hitResult, CallbackInfoReturnable<ActionResult> info) {
         BlockPos pos = hitResult.getBlockPos();
-        BlockState state = player.clientWorld.getBlockState(pos);
+        ClientWorld world = MinecraftClient.getInstance().world;
+        if (world == null) return;
+        BlockState state = world.getBlockState(pos);
         if (state.getBlock() != Blocks.VAULT) return;
         ItemStack stack = player.getStackInHand(hand);
 

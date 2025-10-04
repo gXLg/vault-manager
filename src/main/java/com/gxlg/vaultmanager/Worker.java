@@ -92,8 +92,10 @@ public class Worker {
     public static int queryNearestCommand(CommandContext<FabricClientCommandSource> ctx) {
         FabricClientCommandSource source = ctx.getSource();
         ClientPlayerEntity player = source.getPlayer();
-        if (player.clientWorld.getRegistryKey() != World.OVERWORLD) {
-            source.sendError(Text.literal("Vaults only spawn in the Overworld!").formatted(Formatting.RED));
+        ClientWorld world = MinecraftClient.getInstance().world;
+
+        if (world == null) {
+            source.sendError(Text.literal("Unexpected error: client.world == null").formatted(Formatting.RED));
             return 1;
         }
 
@@ -103,10 +105,27 @@ public class Worker {
             return 1;
         }
 
-        BlockPos cmp = player.getBlockPos();
+        BlockPos cmp;
+        boolean nether = false;
+        if (world.getRegistryKey() == World.OVERWORLD) {
+            cmp = player.getBlockPos();
+        } else if (world.getRegistryKey() == World.NETHER) {
+            BlockPos pl = player.getBlockPos();
+            cmp = new BlockPos(pl.getX() * 8, pl.getY(), pl.getZ() * 8);
+            nether = true;
+        } else {
+            source.sendError(Text.literal("Can't query vaults in this dimension!").formatted(Formatting.RED));
+            return 1;
+        }
+
         BlockPos pos = getVaults(false).stream().map(Worker::posFromString).min(Comparator.comparingInt(a -> a.getManhattanDistance(cmp))).orElseThrow();
-        String distance = new DecimalFormat("#0.00").format(Math.sqrt(pos.getSquaredDistance(cmp)));
-        ctx.getSource().sendFeedback(Text.literal("The nearest open vault is at [" + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + "] (" + distance + " block away)").formatted(Formatting.DARK_PURPLE));
+        double d = Math.sqrt(pos.getSquaredDistance(cmp));
+        String oDistance = new DecimalFormat("#0.00").format(d);
+        source.sendFeedback(Text.literal("Nearest opened vault: [" + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + "] (" + oDistance + " blocks away)").formatted(Formatting.DARK_PURPLE));
+        if (nether) {
+            String nDistance = new DecimalFormat("#0.00").format(d / 8);
+            source.sendFeedback(Text.literal("Nether coordinates: [" + (pos.getX() / 8) + ", " + pos.getY() + ", " + (pos.getZ() / 8) + "] (" + nDistance + " blocks away)").formatted(Formatting.DARK_PURPLE));
+        }
         return 0;
     }
 }

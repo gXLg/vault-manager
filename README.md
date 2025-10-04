@@ -3,8 +3,8 @@ Simple vault manager for Trial Chambers in Minecraft
 
 ---
 
-* <img src="https://gxlg.github.io/multi-version.svg" height="24" align="center" alt="MultiVersion">
-    MultiVersion support <kbd>1.21</kbd>-<kbd>1.21.8</kbd>: Single JAR for all versions
+* <img src="https://gxlg.github.io/multi-version.svg" height="24" width="24" align="center" alt="MultiVersion">
+    MultiVersion support <kbd>1.21</kbd>-<kbd>1.21.9</kbd>: Single JAR for all versions
 
 * Purely client-sided: works in singleplayer, in multiplayer and doesn't have to be installed on the server
 
@@ -22,7 +22,7 @@ Especially useful with Freecam when searching for previously unlooted Trial Cham
 * Open a vault with a matching key to remember it
 * Remember a vault which you have already opened before installing the mod: <kbd>shift</kbd>+<kbd>click</kbd>
 * Forget all remembered vaults from the current world: <kbd>/vault-manager clear</kbd>
-* Query the nearest opened vault: <kbd>/vault-manager near</kbd>
+* Query the nearest opened vault: <kbd>/vault-manager near</kbd>; works in the Overworld and in the Nether
 
 # Memory
 The memory file works just like a config file, slowly being filled by the mod while you loot away.
