@@ -4,7 +4,7 @@ Simple vault manager for Trial Chambers in Minecraft
 ---
 
 * <img src="https://gxlg.github.io/multi-version.svg" height="24" width="24" align="center" alt="MultiVersion">
-    MultiVersion <kbd>1.21</kbd>-<kbd>1.21.9</kbd>: Single JAR for all versions
+    MultiVersion <kbd>1.21</kbd>-<kbd>1.21.10</kbd>: Single JAR for all versions
 
 * Purely <kbd>client side</kbd>: works in Singleplayer, in Multiplayer and doesn't have to be installed on Servers
 

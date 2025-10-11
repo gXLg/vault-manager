@@ -3,6 +3,12 @@ name: Build
 on:
   push:
     branches: ["**"]
+    paths:
+      - "src/**"
+      - "gradle.properties"
+      - "build.gradle"
+      - "MultiVersion"
+      - ".gitmodules"
     tags-ignore: ["**"]
 
 jobs:
