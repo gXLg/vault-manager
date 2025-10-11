@@ -1,4 +1,4 @@
-package com.gxlg.vaultmanager;
+package dev.gxlg.vaultmanager;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

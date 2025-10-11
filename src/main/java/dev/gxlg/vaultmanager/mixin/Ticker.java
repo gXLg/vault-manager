@@ -1,6 +1,6 @@
-package com.gxlg.vaultmanager.mixin;
+package dev.gxlg.vaultmanager.mixin;
 
-import com.gxlg.vaultmanager.Worker;
+import dev.gxlg.vaultmanager.Worker;
 import net.minecraft.client.network.ClientPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

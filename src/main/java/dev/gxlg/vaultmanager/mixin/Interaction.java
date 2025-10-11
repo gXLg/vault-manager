@@ -1,7 +1,7 @@
-package com.gxlg.vaultmanager.mixin;
+package dev.gxlg.vaultmanager.mixin;
 
-import com.gxlg.vaultmanager.MultiVersion;
-import com.gxlg.vaultmanager.Worker;
+import dev.gxlg.vaultmanager.MultiVersion;
+import dev.gxlg.vaultmanager.Worker;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.VaultBlock;

@@ -1,4 +1,4 @@
-package com.gxlg.vaultmanager;
+package dev.gxlg.vaultmanager;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;

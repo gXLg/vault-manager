@@ -7,12 +7,17 @@
 	"authors": [
 		"gXLg"
 	],
+	"contact": {
+		"homepage": "https://gXLg.dev/en",
+		"sources": "https://github.com/gXLg/vault-manager",
+		"issues": "https://github.com/gXLg/vault-manager/issues"
+	},
 	"license": "MIT",
 	"icon": "assets/vault-manager/icon.png",
 	"environment": "client",
 	"entrypoints": {
 		"client": [
-			"com.gxlg.vaultmanager.VaultManager"
+			"dev.gxlg.vaultmanager.VaultManager"
 		]
 	},
 	"mixins": [
@@ -23,7 +28,7 @@
 	],
 	"depends": {
 		"fabricloader": ">=0.13",
-		"minecraft": ">=1.21 <=1.21.9",
+		"minecraft": ">=1.21 <=1.21.10",
 		"java": ">=21",
 		"fabric-api": "*"
 	}

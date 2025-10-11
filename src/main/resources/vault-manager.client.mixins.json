@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "com.gxlg.vaultmanager.mixin",
+  "package": "dev.gxlg.vaultmanager.mixin",
   "compatibilityLevel": "JAVA_21",
   "client": [
     "Interaction",
